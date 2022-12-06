@@ -2,17 +2,14 @@ package com.unab.g04sql.Entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-@Entity
-@Table(name="cities")
-public class Cities {
 
+@Entity
+@Table(name="permissions")
+public class Permissions {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -20,15 +17,14 @@ public class Cities {
 	@Column(name = "codigo", nullable = false, unique = true, length = 20)
     private String codigo;
 	
-	@Column(name = "nombre", nullable = false, unique = true, length = 50)
+	@Column(name = "nombre", nullable = false, unique = false, length = 50)
     private String nombre;
+	
+	@Column(name = "ruta", nullable = false, unique = false, length = 100)
+    private String ruta;
 	
 	@Column(name = "estado", nullable = false)
     private Boolean estado;
-	
-	 @ManyToOne(fetch = FetchType.EAGER, optional = false)
-	 @JoinColumn(name = "departmento_id", nullable = false)
-	 private Departments departmentoId;
 
 	public Integer getId() {
 		return id;
@@ -54,6 +50,14 @@ public class Cities {
 		this.nombre = nombre;
 	}
 
+	public String getRuta() {
+		return ruta;
+	}
+
+	public void setRuta(String ruta) {
+		this.ruta = ruta;
+	}
+
 	public Boolean getEstado() {
 		return estado;
 	}
@@ -61,12 +65,5 @@ public class Cities {
 	public void setEstado(Boolean estado) {
 		this.estado = estado;
 	}
-
-	public Departments getDepartmentId() {
-		return departmentoId;
-	}
-
-	public void setDepartmentId(Departments departmentId) {
-		this.departmentoId = departmentId;
-	}	 
+	
 }
