@@ -6,7 +6,7 @@ import java.util.Optional;
 
 import com.unab.g04sql.Entity.Invoices;
 
-public interface IInvoiceService {
+public interface IInvoicesService {
 
 	public List<Invoices> all();
 	
