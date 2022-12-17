@@ -16,48 +16,51 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unab.g04sql.Entity.Cities;
-import com.unab.g04sql.IService.ICitiesService;
+import com.unab.g04sql.Entity.Details_invoice;
+import com.unab.g04sql.IService.IDetails_invoiceService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/cities")
-public class CitiesController {
+@RequestMapping("api/details_invoice")
+public class Details_invoiceController {
 
 	@Autowired
-	private ICitiesService service;
+	private IDetails_invoiceService service;
 	
 	@GetMapping
-	public List<Cities> all() {
+	public List<Details_invoice> all() {
 		return service.all();
 	}
 	
 	@GetMapping("{id}")
-	public Optional<Cities> show(@PathVariable Integer id) {
+	public Optional<Details_invoice> show(@PathVariable Integer id) {
 		return service.findById(id);
 	}
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Cities save(@RequestBody Cities city) {
-		return service.save(city);
+	public Details_invoice save(@RequestBody Details_invoice detail_invoice) {
+		return service.save(detail_invoice);
 	}
 	
 	@PutMapping("{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Cities update(@PathVariable Integer id, @RequestBody Cities cities) {
-		Optional<Cities> op = service.findById(id);
+	public Details_invoice update(@PathVariable Integer id, @RequestBody Details_invoice details_invoice) {
+		Optional<Details_invoice> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
-			Cities citiesUpdate = op.get();
-			citiesUpdate.setCodigo(cities.getCodigo());
-			citiesUpdate.setNombre(cities.getNombre());
-			citiesUpdate.setDepartmentId(cities.getDepartmentId());
-			citiesUpdate.setEstado(cities.getEstado());
-			return service.save(citiesUpdate);
+			Details_invoice details_invoiceUpdate = op.get();
+			details_invoiceUpdate.setValorBruto(details_invoice.getValorBruto());
+			details_invoiceUpdate.setValorDescuento(details_invoice.getValorDescuento());
+			details_invoiceUpdate.setValorIva(details_invoice.getValorIva());
+			details_invoiceUpdate.setValorNeto(details_invoice.getValorNeto());
+			details_invoiceUpdate.setCantidadProducto(details_invoice.getCantidadProducto());
+			details_invoiceUpdate.setProductoId(details_invoice.getProductoId());
+			details_invoiceUpdate.setFacturaId(details_invoice.getFacturaId());
+			return service.save(details_invoiceUpdate);
 		}
 		
-		return cities;
+		return details_invoice;
 	}
 	
 	@DeleteMapping("{id}")

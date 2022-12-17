@@ -16,48 +16,47 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unab.g04sql.Entity.Cities;
-import com.unab.g04sql.IService.ICitiesService;
+import com.unab.g04sql.Entity.Departments;
+import com.unab.g04sql.IService.IDepartmentsService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/cities")
-public class CitiesController {
+@RequestMapping("api/departments")
+public class DepartmentsController {
 
 	@Autowired
-	private ICitiesService service;
+	private IDepartmentsService service;
 	
 	@GetMapping
-	public List<Cities> all() {
+	public List<Departments> all() {
 		return service.all();
 	}
 	
 	@GetMapping("{id}")
-	public Optional<Cities> show(@PathVariable Integer id) {
+	public Optional<Departments> show(@PathVariable Integer id) {
 		return service.findById(id);
 	}
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Cities save(@RequestBody Cities city) {
-		return service.save(city);
+	public Departments save(@RequestBody Departments department) {
+		return service.save(department);
 	}
 	
 	@PutMapping("{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Cities update(@PathVariable Integer id, @RequestBody Cities cities) {
-		Optional<Cities> op = service.findById(id);
+	public Departments update(@PathVariable Integer id, @RequestBody Departments departments) {
+		Optional<Departments> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
-			Cities citiesUpdate = op.get();
-			citiesUpdate.setCodigo(cities.getCodigo());
-			citiesUpdate.setNombre(cities.getNombre());
-			citiesUpdate.setDepartmentId(cities.getDepartmentId());
-			citiesUpdate.setEstado(cities.getEstado());
-			return service.save(citiesUpdate);
+			Departments departmentsUpdate = op.get();
+			departmentsUpdate.setCodigo(departments.getCodigo());
+			departmentsUpdate.setNombre(departments.getNombre());
+			departmentsUpdate.setEstado(departments.getEstado());
+			return service.save(departmentsUpdate);
 		}
 		
-		return cities;
+		return departments;
 	}
 	
 	@DeleteMapping("{id}")

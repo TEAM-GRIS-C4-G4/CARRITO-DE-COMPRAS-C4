@@ -16,48 +16,47 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unab.g04sql.Entity.Cities;
-import com.unab.g04sql.IService.ICitiesService;
+import com.unab.g04sql.Entity.Categories;
+import com.unab.g04sql.IService.ICategoriesService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/cities")
-public class CitiesController {
+@RequestMapping("api/categories")
+public class CategoriesController {
 
 	@Autowired
-	private ICitiesService service;
+	private ICategoriesService service;
 	
 	@GetMapping
-	public List<Cities> all() {
+	public List<Categories> all() {
 		return service.all();
 	}
 	
 	@GetMapping("{id}")
-	public Optional<Cities> show(@PathVariable Integer id) {
+	public Optional<Categories> show(@PathVariable Integer id) {
 		return service.findById(id);
 	}
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Cities save(@RequestBody Cities city) {
-		return service.save(city);
+	public Categories save(@RequestBody Categories category) {
+		return service.save(category);
 	}
 	
 	@PutMapping("{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Cities update(@PathVariable Integer id, @RequestBody Cities cities) {
-		Optional<Cities> op = service.findById(id);
+	public Categories update(@PathVariable Integer id, @RequestBody Categories categories) {
+		Optional<Categories> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
-			Cities citiesUpdate = op.get();
-			citiesUpdate.setCodigo(cities.getCodigo());
-			citiesUpdate.setNombre(cities.getNombre());
-			citiesUpdate.setDepartmentId(cities.getDepartmentId());
-			citiesUpdate.setEstado(cities.getEstado());
-			return service.save(citiesUpdate);
+			Categories categoriesUpdate = op.get();
+			categoriesUpdate.setCodigo(categories.getCodigo());
+			categoriesUpdate.setNombre(categories.getNombre());
+			categoriesUpdate.setEstado(categories.getEstado());
+			return service.save(categoriesUpdate);
 		}
 		
-		return cities;
+		return categories;
 	}
 	
 	@DeleteMapping("{id}")
