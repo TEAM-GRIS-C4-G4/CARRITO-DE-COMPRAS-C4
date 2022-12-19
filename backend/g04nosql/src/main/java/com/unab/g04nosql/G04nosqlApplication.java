@@ -1,4 +1,4 @@
-package com.unab.g04nonsql;
+package com.unab.g04nosql;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
