@@ -31,6 +31,16 @@ const routes = [
     component: () => import('../views/security/UserView.vue')
   },
   {
+    path: '/inventario-factura',
+    name: 'registro-factura',
+    component: () => import('../views/inventory/InvoiceView.vue')
+  },
+  {
+    path: '/inventario-permiso',
+    name: 'registro-permiso',
+    component: () => import('../views/inventory/PermissionView.vue')
+  },
+  {
     path: '/seguridad-persona',
     name: 'registro-persona',
     component: () => import('../views/security/PersonView.vue')

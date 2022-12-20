@@ -29,8 +29,27 @@
               <div class="dropdown-menu">
                 <router-link class="dropdown-item" to="/seguridad-usuario">Registro Usuarios</router-link>
                 <router-link class="dropdown-item" to="/seguridad-persona">Registro Personas</router-link>
+                <router-link class="dropdown-item" to="/inventario-factura">Registro Facturas</router-link>
+
               </div>
+              
             </li>
+
+            
+
+            <!-- <div class="dropdown-divider"></div> -->
+            <!-- Seguridad -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">Parámetros</a>
+              <div class="dropdown-menu">
+                <router-link class="dropdown-item" to="/inventario-permiso">Registro Permisos</router-link>
+                <router-link class="dropdown-item" to="/inventario-factura">Registro Facturas</router-link>
+                
+              </div>
+              
+            </li>
+
           </ul>
           <form class="d-flex">
             <input class="form-control me-sm-2" type="search" placeholder="Search">

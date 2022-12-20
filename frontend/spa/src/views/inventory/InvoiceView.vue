@@ -62,7 +62,7 @@
                         <td>Fecha</td>
                         <td>Valor Bruto</td>
                         <td>Valor Descuento</td>
-                        <td>Valor Iva/td>
+                        <td>Valor Iva</td>
                         <td>Valor Neto</td>
                         <td>Usuario</td>   
                         <td>Estado</td>
