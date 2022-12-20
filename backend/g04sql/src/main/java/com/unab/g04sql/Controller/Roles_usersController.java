@@ -39,8 +39,8 @@ public class Roles_usersController {
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Roles_users save(@RequestBody Roles_users brand) {
-		return service.save(brand);
+	public Roles_users save(@RequestBody Roles_users rol_user) {
+		return service.save(rol_user);
 	}
 	
 	@PutMapping("{id}")
@@ -49,11 +49,11 @@ public class Roles_usersController {
 		Optional<Roles_users> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
-			Roles_users Roles_usersUpdate = op.get();
-			Roles_usersUpdate.setRolId(roles_users.getRolId());
-			Roles_usersUpdate.setId(roles_users.getId());
-			Roles_usersUpdate.setUsuarioId(roles_users.getUsuarioId());
-			return service.save(Roles_usersUpdate);
+			Roles_users roles_usersUpdate = op.get();
+			roles_usersUpdate.setRolId(roles_users.getRolId());
+			roles_usersUpdate.setId(roles_users.getId());
+			roles_usersUpdate.setUsuarioId(roles_users.getUsuarioId());
+			return service.save(roles_usersUpdate);
 		}
 		
 		return roles_users;

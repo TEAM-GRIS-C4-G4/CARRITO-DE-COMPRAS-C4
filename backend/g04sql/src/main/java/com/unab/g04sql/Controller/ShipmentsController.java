@@ -39,8 +39,8 @@ public class ShipmentsController {
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Shipments save(@RequestBody Shipments roles) {
-		return service.save(roles);
+	public Shipments save(@RequestBody Shipments shipment) {
+		return service.save(shipment);
 	}
 	
 	@PutMapping("{id}")
@@ -49,20 +49,19 @@ public class ShipmentsController {
 		Optional<Shipments> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
-			Shipments rolesUpdate = op.get();
-			rolesUpdate.setCodigoEnvio(shipments.getCodigoEnvio());
-			rolesUpdate.setDescripcion(shipments.getDescripcion());
-			rolesUpdate.setEstadoEntrega(shipments.getEstadoEntrega());
-			rolesUpdate.setFacturaId(shipments.getFacturaId());
-			rolesUpdate.setFechaEntrega(shipments.getFechaEntrega());
-			rolesUpdate.setFechaEnviado(shipments.getFechaEnviado());
-			rolesUpdate.setId(shipments.getId());
-			rolesUpdate.setNumeroGuia(shipments.getNumeroGuia());
-			rolesUpdate.setUrlSeguimiento(shipments.getUrlSeguimiento());
-			rolesUpdate.setValorEnvio(shipments.getValorEnvio());
+			Shipments shipmentsUpdate = op.get();
+			shipmentsUpdate.setCodigoEnvio(shipments.getCodigoEnvio());
+			shipmentsUpdate.setDescripcion(shipments.getDescripcion());
+			shipmentsUpdate.setEstadoEntrega(shipments.getEstadoEntrega());
+			shipmentsUpdate.setFacturaId(shipments.getFacturaId());
+			shipmentsUpdate.setFechaEntrega(shipments.getFechaEntrega());
+			shipmentsUpdate.setFechaEnviado(shipments.getFechaEnviado());
+			shipmentsUpdate.setNumeroGuia(shipments.getNumeroGuia());
+			shipmentsUpdate.setUrlSeguimiento(shipments.getUrlSeguimiento());
+			shipmentsUpdate.setValorEnvio(shipments.getValorEnvio());
 			
 			
-			return service.save(rolesUpdate);
+			return service.save(shipmentsUpdate);
 		}
 		
 		return shipments;

@@ -21,7 +21,7 @@ import com.unab.g04sql.IService.IUsersService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/userss")
+@RequestMapping("api/users")
 public class UsersController{
 
 	@Autowired
@@ -39,25 +39,24 @@ public class UsersController{
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Users save(@RequestBody Users users) {
-		return service.save(users);
+	public Users save(@RequestBody Users user) {
+		return service.save(user);
 	}
 	
 	@PutMapping("{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Users update(@PathVariable Integer id, @RequestBody Users userss) {
+	public Users update(@PathVariable Integer id, @RequestBody Users users) {
 		Optional<Users> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
 			Users usersUpdate = op.get();
-			usersUpdate.setEstado(userss.getEstado());
-			usersUpdate.setContrasena(userss.getContrasena());
-			usersUpdate.setId(userss.getId());
-			usersUpdate.setUsuario(userss.getUsuario());
+			usersUpdate.setEstado(users.getEstado());
+			usersUpdate.setContrasena(users.getContrasena());
+			usersUpdate.setUsuario(users.getUsuario());
 			return service.save(usersUpdate);
 		}
 		
-		return userss;
+		return users;
 	}
 	
 	@DeleteMapping("{id}")

@@ -21,7 +21,7 @@ import com.unab.g04sql.IService.IUnits_measuredService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/shipments")
+@RequestMapping("api/units_measured")
 public class Units_measuredController {
 
 	@Autowired
@@ -39,8 +39,8 @@ public class Units_measuredController {
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Units_measured save(@RequestBody Units_measured units_measured) {
-		return service.save(units_measured);
+	public Units_measured save(@RequestBody Units_measured unit_measured) {
+		return service.save(unit_measured);
 	}
 	
 	@PutMapping("{id}")
@@ -49,15 +49,11 @@ public class Units_measuredController {
 		Optional<Units_measured> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
-			Units_measured units_measuredUpdate = op.get();
-			units_measuredUpdate.setId(units_measuredUpdate.getId());			
+			Units_measured units_measuredUpdate = op.get();			
 			units_measuredUpdate.setDescripcion(units_measuredUpdate.getDescripcion());
 			units_measuredUpdate.setCodigo(units_measuredUpdate.getCodigo());
 			units_measuredUpdate.setEstado(units_measuredUpdate.getEstado());
 			units_measuredUpdate.setNombre(units_measuredUpdate.getNombre());
-			
-
-			
 			
 			return service.save(units_measuredUpdate);
 		}

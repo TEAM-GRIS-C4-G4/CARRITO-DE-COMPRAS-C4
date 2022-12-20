@@ -21,7 +21,7 @@ import com.unab.g04sql.IService.IRolesService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/roless")
+@RequestMapping("api/roles")
 public class RolesController{
 
 	@Autowired
@@ -39,24 +39,24 @@ public class RolesController{
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Roles save(@RequestBody Roles roles) {
-		return service.save(roles);
+	public Roles save(@RequestBody Roles rol) {
+		return service.save(rol);
 	}
 	
 	@PutMapping("{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Roles update(@PathVariable Integer id, @RequestBody Roles roless) {
+	public Roles update(@PathVariable Integer id, @RequestBody Roles roles) {
 		Optional<Roles> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
 			Roles rolesUpdate = op.get();
-			rolesUpdate.setCodigo(roless.getCodigo());
-			rolesUpdate.setNombre(roless.getNombre());
-			rolesUpdate.setEstado(roless.getEstado());
+			rolesUpdate.setCodigo(roles.getCodigo());
+			rolesUpdate.setNombre(roles.getNombre());
+			rolesUpdate.setEstado(roles.getEstado());
 			return service.save(rolesUpdate);
 		}
 		
-		return roless;
+		return roles;
 	}
 	
 	@DeleteMapping("{id}")
