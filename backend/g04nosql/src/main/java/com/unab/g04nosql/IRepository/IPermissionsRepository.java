@@ -1,10 +1,12 @@
 package com.unab.g04nosql.IRepository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+
+
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.unab.g04nosql.Collection.Permissions;
 
 
-public interface IPermissionsRepository extends JpaRepository<Permissions, Integer> {
+public interface IPermissionsRepository extends MongoRepository<Permissions, String> {
 
 }

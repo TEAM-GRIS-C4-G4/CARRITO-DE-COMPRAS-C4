@@ -1,9 +1,9 @@
 package com.unab.g04nosql.IRepository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.unab.g04nosql.Collection.Shipments;
 
-public interface IShipmentsRepository extends JpaRepository<Shipments, Integer> {
+public interface IShipmentsRepository extends MongoRepository<Shipments, String> {
 
 }
