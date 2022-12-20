@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <form id="city">
+        <form id="invoice">
             <fieldset>
                 <div class="alert alert-dismissible alert-warning">
                     <p class="mb-0">Registro de Facturas</p>

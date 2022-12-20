@@ -29,7 +29,7 @@
               <div class="dropdown-menu">
                 <router-link class="dropdown-item" to="/seguridad-usuario">Registro Usuarios</router-link>
                 <router-link class="dropdown-item" to="/seguridad-persona">Registro Personas</router-link>
-                <router-link class="dropdown-item" to="/inventario-factura">Registro Facturas</router-link>
+                
 
               </div>
               
