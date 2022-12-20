@@ -8,9 +8,9 @@ public interface IPersonsService {
 
 	public List<Persons> all();
 	
-	public Optional<Persons> findById(Integer id);
+	public Optional<Persons> findById(String id);
 	
 	public Persons save (Persons persons);
 	
-	public void delete (Integer id);
+	public void delete (String id);
 }

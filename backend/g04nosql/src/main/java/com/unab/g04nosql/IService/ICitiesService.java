@@ -10,9 +10,9 @@ public interface ICitiesService {
 
 	public List<Cities> all();
 	
-	public Optional<Cities> findById(Integer id);
+	public Optional<Cities> findById(String id);
 	
 	public Cities save (Cities cities);
 	
-	public void delete (Integer id);
+	public void delete (String id);
 }

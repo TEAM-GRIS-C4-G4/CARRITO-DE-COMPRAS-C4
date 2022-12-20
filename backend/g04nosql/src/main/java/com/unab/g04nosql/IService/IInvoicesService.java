@@ -10,9 +10,9 @@ public interface IInvoicesService {
 
 	public List<Invoices> all();
 	
-	public Optional<Invoices> findById(Integer id);
+	public Optional<Invoices> findById(String id);
 	
 	public Invoices save (Invoices invoices);
 	
-	public void delete (Integer id);
+	public void delete (String id);
 }

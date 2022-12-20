@@ -10,9 +10,9 @@ public interface IRoles_usersService {
 
 	public List<Roles_users> all();
 	
-	public Optional<Roles_users> findById(Integer id);
+	public Optional<Roles_users> findById(String id);
 	
 	public Roles_users save (Roles_users roles_users);
 	
-	public void delete (Integer id);
+	public void delete (String id);
 }

@@ -10,9 +10,9 @@ public interface IDepartmentsService {
 
 	public List<Departments> all();
 	
-	public Optional<Departments> findById(Integer id);
+	public Optional<Departments> findById(String id);
 	
 	public Departments save (Departments departments);
 	
-	public void delete (Integer id);
+	public void delete (String id);
 }

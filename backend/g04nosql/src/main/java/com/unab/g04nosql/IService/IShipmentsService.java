@@ -10,9 +10,9 @@ public interface IShipmentsService {
 
 	public List<Shipments> all();
 	
-	public Optional<Shipments> findById(Integer id);
+	public Optional<Shipments> findById(String id);
 	
 	public Shipments save (Shipments shipments);
 	
-	public void delete (Integer id);
+	public void delete (String id);
 }

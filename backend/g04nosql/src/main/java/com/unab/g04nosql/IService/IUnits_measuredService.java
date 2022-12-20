@@ -10,9 +10,9 @@ public interface IUnits_measuredService {
 
 	public List<Units_measured> all();
 	
-	public Optional<Units_measured> findById(Integer id);
+	public Optional<Units_measured> findById(String id);
 	
 	public Units_measured save (Units_measured units_measured);
 	
-	public void delete (Integer id);
+	public void delete (String id);
 }
