@@ -1,4 +1,4 @@
-package com.unab.g04sql.Controller;
+package com.unab.g04nosql.Controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,51 +16,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unab.g04sql.Entity.Roles_permissions;
-import com.unab.g04sql.IService.IRoles_permissionsService;
+import com.unab.g04nosql.Collection.Users;
+import com.unab.g04nosql.IService.IUsersService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/roles_permissions")
-public class Roles_permissionsController {
+@RequestMapping("api/users")
+public class UsersController{
 
 	@Autowired
-	private IRoles_permissionsService service;
+	private IUsersService service;
 	
 	@GetMapping
-	public List<Roles_permissions> all() {
+	public List<Users> all() {
 		return service.all();
 	}
 	
 	@GetMapping("{id}")
-	public Optional<Roles_permissions> show(@PathVariable Integer id) {
+	public Optional<Users> show(@PathVariable String id) {
 		return service.findById(id);
 	}
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Roles_permissions save(@RequestBody Roles_permissions rol_permission) {
-		return service.save(rol_permission);
+	public Users save(@RequestBody Users user) {
+		return service.save(user);
 	}
 	
 	@PutMapping("{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Roles_permissions update(@PathVariable Integer id, @RequestBody Roles_permissions roles_permissions) {
-		Optional<Roles_permissions> op = service.findById(id);
+	public Users update(@PathVariable String id, @RequestBody Users users) {
+		Optional<Users> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
-			Roles_permissions roles_permissionsUpdate = op.get();
-			roles_permissionsUpdate.setRolId(roles_permissions.getRolId());
-			roles_permissionsUpdate.setPermisoId(roles_permissions.getPermisoId());
-			return service.save(roles_permissionsUpdate);
+			Users usersUpdate = op.get();
+			usersUpdate.setEstado(users.getEstado());
+			usersUpdate.setContrasena(users.getContrasena());
+			usersUpdate.setUsuario(users.getUsuario());
+			return service.save(usersUpdate);
 		}
 		
-		return roles_permissions;
+		return users;
 	}
 	
 	@DeleteMapping("{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Integer id) {
+	public void delete(@PathVariable String id) {
 		service.delete(id);
 	}
 	

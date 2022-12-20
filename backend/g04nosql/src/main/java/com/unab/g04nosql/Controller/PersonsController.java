@@ -1,4 +1,4 @@
-package com.unab.g04sql.Controller;
+package com.unab.g04nosql.Controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unab.g04sql.Entity.Persons;
-import com.unab.g04sql.IService.IPersonsService;
+import com.unab.g04nosql.Collection.Persons;
+import com.unab.g04nosql.IService.IPersonsService;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -33,7 +33,7 @@ public class PersonsController {
 	}
 	
 	@GetMapping("{id}")
-	public Optional<Persons> show(@PathVariable Integer id) {
+	public Optional<Persons> show(@PathVariable String id) {
 		return service.findById(id);
 	}
 	
@@ -45,7 +45,7 @@ public class PersonsController {
 	
 	@PutMapping("{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Persons update(@PathVariable Integer id, @RequestBody Persons persons) {
+	public Persons update(@PathVariable String id, @RequestBody Persons persons) {
 		Optional<Persons> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
@@ -71,7 +71,7 @@ public class PersonsController {
 	
 	@DeleteMapping("{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Integer id) {
+	public void delete(@PathVariable String id) {
 		service.delete(id);
 	}
 	

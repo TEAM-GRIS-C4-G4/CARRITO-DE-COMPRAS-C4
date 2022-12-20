@@ -1,4 +1,4 @@
-package com.unab.g04sql.Controller;
+package com.unab.g04nosql.Controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,52 +16,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unab.g04sql.Entity.Brands;
-import com.unab.g04sql.IService.IBrandsService;
+import com.unab.g04nosql.Collection.Departments;
+import com.unab.g04nosql.IService.IDepartmentsService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/brands")
-public class BrandsController {
+@RequestMapping("api/departments")
+public class DepartmentsController {
 
 	@Autowired
-	private IBrandsService service;
+	private IDepartmentsService service;
 	
 	@GetMapping
-	public List<Brands> all() {
+	public List<Departments> all() {
 		return service.all();
 	}
 	
 	@GetMapping("{id}")
-	public Optional<Brands> show(@PathVariable Integer id) {
+	public Optional<Departments> show(@PathVariable String id) {
 		return service.findById(id);
 	}
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Brands save(@RequestBody Brands brand) {
-		return service.save(brand);
+	public Departments save(@RequestBody Departments department) {
+		return service.save(department);
 	}
 	
 	@PutMapping("{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Brands update(@PathVariable Integer id, @RequestBody Brands brands) {
-		Optional<Brands> op = service.findById(id);
+	public Departments update(@PathVariable String id, @RequestBody Departments departments) {
+		Optional<Departments> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
-			Brands brandsUpdate = op.get();
-			brandsUpdate.setCodigo(brands.getCodigo());
-			brandsUpdate.setNombre(brands.getNombre());
-			brandsUpdate.setEstado(brands.getEstado());
-			return service.save(brandsUpdate);
+			Departments departmentsUpdate = op.get();
+			departmentsUpdate.setCodigo(departments.getCodigo());
+			departmentsUpdate.setNombre(departments.getNombre());
+			departmentsUpdate.setEstado(departments.getEstado());
+			return service.save(departmentsUpdate);
 		}
 		
-		return brands;
+		return departments;
 	}
 	
 	@DeleteMapping("{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Integer id) {
+	public void delete(@PathVariable String id) {
 		service.delete(id);
 	}
 	

@@ -1,4 +1,4 @@
-package com.unab.g04sql.Controller;
+package com.unab.g04nosql.Controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unab.g04sql.Entity.Roles_users;
-import com.unab.g04sql.IService.IRoles_usersService;
+import com.unab.g04nosql.Collection.Roles_users;
+import com.unab.g04nosql.IService.IRoles_usersService;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -33,7 +33,7 @@ public class Roles_usersController {
 	}
 	
 	@GetMapping("{id}")
-	public Optional<Roles_users> show(@PathVariable Integer id) {
+	public Optional<Roles_users> show(@PathVariable String id) {
 		return service.findById(id);
 	}
 	
@@ -45,7 +45,7 @@ public class Roles_usersController {
 	
 	@PutMapping("{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Roles_users update(@PathVariable Integer id, @RequestBody Roles_users roles_users) {
+	public Roles_users update(@PathVariable String id, @RequestBody Roles_users roles_users) {
 		Optional<Roles_users> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
@@ -61,7 +61,7 @@ public class Roles_usersController {
 	
 	@DeleteMapping("{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Integer id) {
+	public void delete(@PathVariable String id) {
 		service.delete(id);
 	}
 	

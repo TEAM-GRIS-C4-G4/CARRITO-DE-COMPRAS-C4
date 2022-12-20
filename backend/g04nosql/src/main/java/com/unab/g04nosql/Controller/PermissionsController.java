@@ -1,4 +1,4 @@
-package com.unab.g04sql.Controller;
+package com.unab.g04nosql.Controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,52 +16,53 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unab.g04sql.Entity.Roles;
-import com.unab.g04sql.IService.IRolesService;
+import com.unab.g04nosql.Collection.Permissions;
+import com.unab.g04nosql.IService.IPermissionsService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/roles")
-public class RolesController{
+@RequestMapping("api/permissions")
+public class PermissionsController {
 
 	@Autowired
-	private IRolesService service;
+	private IPermissionsService service;
 	
 	@GetMapping
-	public List<Roles> all() {
+	public List<Permissions> all() {
 		return service.all();
 	}
 	
 	@GetMapping("{id}")
-	public Optional<Roles> show(@PathVariable Integer id) {
+	public Optional<Permissions> show(@PathVariable String id) {
 		return service.findById(id);
 	}
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Roles save(@RequestBody Roles rol) {
-		return service.save(rol);
+	public Permissions save(@RequestBody Permissions permission) {
+		return service.save(permission);
 	}
 	
 	@PutMapping("{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Roles update(@PathVariable Integer id, @RequestBody Roles roles) {
-		Optional<Roles> op = service.findById(id);
+	public Permissions update(@PathVariable String id, @RequestBody Permissions permissions) {
+		Optional<Permissions> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
-			Roles rolesUpdate = op.get();
-			rolesUpdate.setCodigo(roles.getCodigo());
-			rolesUpdate.setNombre(roles.getNombre());
-			rolesUpdate.setEstado(roles.getEstado());
-			return service.save(rolesUpdate);
+			Permissions permissionsUpdate = op.get();
+			permissionsUpdate.setCodigo(permissions.getCodigo());
+			permissionsUpdate.setNombre(permissions.getNombre());
+			permissionsUpdate.setRuta(permissions.getRuta());
+			permissionsUpdate.setEstado(permissions.getEstado());
+			return service.save(permissionsUpdate);
 		}
 		
-		return roles;
+		return permissions;
 	}
 	
 	@DeleteMapping("{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Integer id) {
+	public void delete(@PathVariable String id) {
 		service.delete(id);
 	}
 	

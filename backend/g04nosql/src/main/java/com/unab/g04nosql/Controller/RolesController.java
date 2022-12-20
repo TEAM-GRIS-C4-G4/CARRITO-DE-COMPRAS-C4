@@ -1,4 +1,4 @@
-package com.unab.g04sql.Controller;
+package com.unab.g04nosql.Controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,52 +16,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unab.g04sql.Entity.Departments;
-import com.unab.g04sql.IService.IDepartmentsService;
+import com.unab.g04nosql.Collection.Roles;
+import com.unab.g04nosql.IService.IRolesService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/departments")
-public class DepartmentsController {
+@RequestMapping("api/roles")
+public class RolesController{
 
 	@Autowired
-	private IDepartmentsService service;
+	private IRolesService service;
 	
 	@GetMapping
-	public List<Departments> all() {
+	public List<Roles> all() {
 		return service.all();
 	}
 	
 	@GetMapping("{id}")
-	public Optional<Departments> show(@PathVariable Integer id) {
+	public Optional<Roles> show(@PathVariable String id) {
 		return service.findById(id);
 	}
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Departments save(@RequestBody Departments department) {
-		return service.save(department);
+	public Roles save(@RequestBody Roles rol) {
+		return service.save(rol);
 	}
 	
 	@PutMapping("{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Departments update(@PathVariable Integer id, @RequestBody Departments departments) {
-		Optional<Departments> op = service.findById(id);
+	public Roles update(@PathVariable String id, @RequestBody Roles roles) {
+		Optional<Roles> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
-			Departments departmentsUpdate = op.get();
-			departmentsUpdate.setCodigo(departments.getCodigo());
-			departmentsUpdate.setNombre(departments.getNombre());
-			departmentsUpdate.setEstado(departments.getEstado());
-			return service.save(departmentsUpdate);
+			Roles rolesUpdate = op.get();
+			rolesUpdate.setCodigo(roles.getCodigo());
+			rolesUpdate.setNombre(roles.getNombre());
+			rolesUpdate.setEstado(roles.getEstado());
+			return service.save(rolesUpdate);
 		}
 		
-		return departments;
+		return roles;
 	}
 	
 	@DeleteMapping("{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Integer id) {
+	public void delete(@PathVariable String id) {
 		service.delete(id);
 	}
 	

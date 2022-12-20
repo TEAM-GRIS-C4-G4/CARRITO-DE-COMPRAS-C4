@@ -1,4 +1,4 @@
-package com.unab.g04sql.Controller;
+package com.unab.g04nosql.Controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unab.g04sql.Entity.Products;
-import com.unab.g04sql.IService.IProductsService;
+import com.unab.g04nosql.Collection.Products;
+import com.unab.g04nosql.IService.IProductsService;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -33,7 +33,7 @@ public class ProductsController {
 	}
 	
 	@GetMapping("{id}")
-	public Optional<Products> show(@PathVariable Integer id) {
+	public Optional<Products> show(@PathVariable String id) {
 		return service.findById(id);
 	}
 	
@@ -45,7 +45,7 @@ public class ProductsController {
 	
 	@PutMapping("{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Products update(@PathVariable Integer id, @RequestBody Products products) {
+	public Products update(@PathVariable String id, @RequestBody Products products) {
 		Optional<Products> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
@@ -73,7 +73,7 @@ public class ProductsController {
 	
 	@DeleteMapping("{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Integer id) {
+	public void delete(@PathVariable String id) {
 		service.delete(id);
 	}
 	

@@ -1,4 +1,4 @@
-package com.unab.g04sql.Controller;
+package com.unab.g04nosql.Controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,54 +16,53 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unab.g04sql.Entity.Units_measured;
-import com.unab.g04sql.IService.IUnits_measuredService;
+import com.unab.g04nosql.Collection.Cities;
+import com.unab.g04nosql.IService.ICitiesService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/units_measured")
-public class Units_measuredController {
+@RequestMapping("api/cities")
+public class CitiesController {
 
 	@Autowired
-	private IUnits_measuredService service;
+	private ICitiesService service;
 	
 	@GetMapping
-	public List<Units_measured> all() {
+	public List<Cities> all() {
 		return service.all();
 	}
 	
 	@GetMapping("{id}")
-	public Optional<Units_measured> show(@PathVariable Integer id) {
+	public Optional<Cities> show(@PathVariable String id) {
 		return service.findById(id);
 	}
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Units_measured save(@RequestBody Units_measured unit_measured) {
-		return service.save(unit_measured);
+	public Cities save(@RequestBody Cities city) {
+		return service.save(city);
 	}
 	
 	@PutMapping("{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Units_measured update(@PathVariable Integer id, @RequestBody Units_measured shipments) {
-		Optional<Units_measured> op = service.findById(id);
+	public Cities update(@PathVariable String id, @RequestBody Cities cities) {
+		Optional<Cities> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
-			Units_measured units_measuredUpdate = op.get();			
-			units_measuredUpdate.setDescripcion(units_measuredUpdate.getDescripcion());
-			units_measuredUpdate.setCodigo(units_measuredUpdate.getCodigo());
-			units_measuredUpdate.setEstado(units_measuredUpdate.getEstado());
-			units_measuredUpdate.setNombre(units_measuredUpdate.getNombre());
-			
-			return service.save(units_measuredUpdate);
+			Cities citiesUpdate = op.get();
+			citiesUpdate.setCodigo(cities.getCodigo());
+			citiesUpdate.setNombre(cities.getNombre());
+			citiesUpdate.setDepartmentoId(cities.getDepartmentoId());
+			citiesUpdate.setEstado(cities.getEstado());
+			return service.save(citiesUpdate);
 		}
 		
-		return shipments;
+		return cities;
 	}
 	
 	@DeleteMapping("{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Integer id) {
+	public void delete(@PathVariable String id) {
 		service.delete(id);
 	}
 	

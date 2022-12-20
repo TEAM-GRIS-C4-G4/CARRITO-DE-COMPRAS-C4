@@ -1,4 +1,4 @@
-package com.unab.g04sql.Controller;
+package com.unab.g04nosql.Controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,52 +16,52 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unab.g04sql.Entity.Users;
-import com.unab.g04sql.IService.IUsersService;
+import com.unab.g04nosql.Collection.Categories;
+import com.unab.g04nosql.IService.ICategoriesService;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("api/users")
-public class UsersController{
+@RequestMapping("api/categories")
+public class CategoriesController {
 
 	@Autowired
-	private IUsersService service;
+	private ICategoriesService service;
 	
 	@GetMapping
-	public List<Users> all() {
+	public List<Categories> all() {
 		return service.all();
 	}
 	
 	@GetMapping("{id}")
-	public Optional<Users> show(@PathVariable Integer id) {
+	public Optional<Categories> show(@PathVariable String id) {
 		return service.findById(id);
 	}
 	
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Users save(@RequestBody Users user) {
-		return service.save(user);
+	public Categories save(@RequestBody Categories category) {
+		return service.save(category);
 	}
 	
 	@PutMapping("{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Users update(@PathVariable Integer id, @RequestBody Users users) {
-		Optional<Users> op = service.findById(id);
+	public Categories update(@PathVariable String id, @RequestBody Categories categories) {
+		Optional<Categories> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
-			Users usersUpdate = op.get();
-			usersUpdate.setEstado(users.getEstado());
-			usersUpdate.setContrasena(users.getContrasena());
-			usersUpdate.setUsuario(users.getUsuario());
-			return service.save(usersUpdate);
+			Categories categoriesUpdate = op.get();
+			categoriesUpdate.setCodigo(categories.getCodigo());
+			categoriesUpdate.setNombre(categories.getNombre());
+			categoriesUpdate.setEstado(categories.getEstado());
+			return service.save(categoriesUpdate);
 		}
 		
-		return users;
+		return categories;
 	}
 	
 	@DeleteMapping("{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Integer id) {
+	public void delete(@PathVariable String id) {
 		service.delete(id);
 	}
 	

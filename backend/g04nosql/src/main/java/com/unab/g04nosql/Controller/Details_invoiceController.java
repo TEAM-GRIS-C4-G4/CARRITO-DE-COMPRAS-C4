@@ -1,4 +1,4 @@
-package com.unab.g04sql.Controller;
+package com.unab.g04nosql.Controller;
 
 import java.util.List;
 import java.util.Optional;
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unab.g04sql.Entity.Details_invoice;
-import com.unab.g04sql.IService.IDetails_invoiceService;
+import com.unab.g04nosql.Collection.Details_invoice;
+import com.unab.g04nosql.IService.IDetails_invoiceService;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -33,7 +33,7 @@ public class Details_invoiceController {
 	}
 	
 	@GetMapping("{id}")
-	public Optional<Details_invoice> show(@PathVariable Integer id) {
+	public Optional<Details_invoice> show(@PathVariable String id) {
 		return service.findById(id);
 	}
 	
@@ -45,7 +45,7 @@ public class Details_invoiceController {
 	
 	@PutMapping("{id}")
 	@ResponseStatus(code = HttpStatus.CREATED)
-	public Details_invoice update(@PathVariable Integer id, @RequestBody Details_invoice details_invoice) {
+	public Details_invoice update(@PathVariable String id, @RequestBody Details_invoice details_invoice) {
 		Optional<Details_invoice> op = service.findById(id);
 		
 		if (!op.isEmpty()) {
@@ -65,7 +65,7 @@ public class Details_invoiceController {
 	
 	@DeleteMapping("{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void delete(@PathVariable Integer id) {
+	public void delete(@PathVariable String id) {
 		service.delete(id);
 	}
 	
