@@ -45,6 +45,17 @@ const routes = [
     name: 'registro-persona',
     component: () => import('../views/security/PersonView.vue')
   }
+  ,
+  {
+    path: '/parametro-marca',
+    name: 'registro-marca',
+    component: () => import('../views/parameter/BrandView.vue')
+  } ,
+  {
+    path: '/parametro-categoria',
+    name: 'registro-categoria',
+    component: () => import('../views/parameter/CategoryView.vue')
+  }
 
 ]
 
