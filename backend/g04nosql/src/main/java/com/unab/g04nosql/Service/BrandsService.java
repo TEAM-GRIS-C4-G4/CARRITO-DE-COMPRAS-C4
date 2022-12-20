@@ -16,7 +16,7 @@ public class BrandsService implements IBrandsService{
 	@Autowired
 	private IBrandsRepository repository;
 	
-		@Override
+	@Override
 	public List<Brands> all() {
 		return repository.findAll();
 	}

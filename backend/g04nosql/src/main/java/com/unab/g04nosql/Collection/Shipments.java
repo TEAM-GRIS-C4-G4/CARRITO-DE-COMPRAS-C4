@@ -1,6 +1,6 @@
 package com.unab.g04nosql.Collection;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -30,10 +30,10 @@ public class Shipments {
     private String numeroGuia;
 	
 	@Field("fechaEnviado")
-    private Calendar fechaEnviado;
+    private Date fechaEnviado;
 	
 	@Field("fechaEntrega")
-    private Calendar fechaEntrega;
+    private Date fechaEntrega;
 	
 	@Field("estadoEntrega")
     private String estadoEntrega;
@@ -89,19 +89,19 @@ public class Shipments {
 		this.numeroGuia = numeroGuia;
 	}
 
-	public Calendar getFechaEnviado() {
+	public Date getFechaEnviado() {
 		return fechaEnviado;
 	}
 
-	public void setFechaEnviado(Calendar fechaEnviado) {
+	public void setFechaEnviado(Date fechaEnviado) {
 		this.fechaEnviado = fechaEnviado;
 	}
 
-	public Calendar getFechaEntrega() {
+	public Date getFechaEntrega() {
 		return fechaEntrega;
 	}
 
-	public void setFechaEntrega(Calendar fechaEntrega) {
+	public void setFechaEntrega(Date fechaEntrega) {
 		this.fechaEntrega = fechaEntrega;
 	}
 

@@ -16,7 +16,7 @@ public class CategoriesService implements ICategoriesService{
 	@Autowired
 	private ICategoriesRepository repository;
 	
-		@Override
+	@Override
 	public List<Categories> all() {
 		return repository.findAll();
 	}

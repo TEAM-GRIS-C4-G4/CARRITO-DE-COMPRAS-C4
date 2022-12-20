@@ -1,7 +1,7 @@
 package com.unab.g04nosql.Collection;
 
 
-import java.util.Calendar;
+import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -17,7 +17,7 @@ public class Invoices {
     private String codigoFactura;
 	
 	@Field("fecha")
-    private Calendar fecha; 
+    private Date fecha; 
 	
 	@Field("valorBruto")
     private Float valorBruto;
@@ -50,11 +50,11 @@ public class Invoices {
 		this.codigoFactura = codigoFactura;
 	}
 
-	public Calendar getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Calendar fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 

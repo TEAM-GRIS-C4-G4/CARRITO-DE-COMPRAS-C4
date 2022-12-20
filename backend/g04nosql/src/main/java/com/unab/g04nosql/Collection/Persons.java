@@ -1,6 +1,6 @@
 package com.unab.g04nosql.Collection;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -44,7 +44,7 @@ public class Persons {
     private Boolean estado;
 	
 	@Field("fechaNacimiento")
-    private Calendar fechaNacimiento;
+    private Date fechaNacimiento;
 	
 	 @DBRef
 	 private Users usuarioId;
@@ -140,11 +140,11 @@ public class Persons {
 		this.estado = estado;
 	}
 
-	public Calendar getFechaNacimiento() {
+	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
 
-	public void setFechaNacimiento(Calendar fechaNacimiento) {
+	public void setFechaNacimiento(Date fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
