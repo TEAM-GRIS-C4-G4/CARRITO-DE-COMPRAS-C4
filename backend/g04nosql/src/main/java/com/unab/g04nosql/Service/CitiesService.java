@@ -22,7 +22,7 @@ public class CitiesService implements ICitiesService{
 	}
 	
 	@Override
-	public Optional<Cities> findById(Integer id) {
+	public Optional<Cities> findById(String id) {
 		return repository.findById(id);
 	}
 	
@@ -32,7 +32,7 @@ public class CitiesService implements ICitiesService{
 	}
 	
 	@Override
-	public void delete(Integer id) {
+	public void delete(String id) {
 		repository.deleteById(id);		
 	}
 		

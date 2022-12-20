@@ -22,7 +22,7 @@ public class InvoicesService implements IInvoicesService{
 	}
 	
 	@Override
-	public Optional<Invoices> findById(Integer id) {
+	public Optional<Invoices> findById(String id) {
 		return repository.findById(id);
 	}
 	
@@ -32,7 +32,7 @@ public class InvoicesService implements IInvoicesService{
 	}
 	
 	@Override
-	public void delete(Integer id) {
+	public void delete(String id) {
 		repository.deleteById(id);		
 	}
 		

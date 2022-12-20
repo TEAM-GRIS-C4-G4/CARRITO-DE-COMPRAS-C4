@@ -22,7 +22,7 @@ public class PersonsService implements IPersonsService{
 	}
 	
 	@Override
-	public Optional<Persons> findById(Integer id) {
+	public Optional<Persons> findById(String id) {
 		return repository.findById(id);
 	}
 	
@@ -32,7 +32,7 @@ public class PersonsService implements IPersonsService{
 	}
 	
 	@Override
-	public void delete(Integer id) {
+	public void delete(String id) {
 		repository.deleteById(id);		
 	}
 		

@@ -22,7 +22,7 @@ public class UsersService implements IUsersService{
 	}
 	
 	@Override
-	public Optional<Users> findById(Integer id) {
+	public Optional<Users> findById(String id) {
 		return repository.findById(id);
 	}
 	
@@ -32,7 +32,7 @@ public class UsersService implements IUsersService{
 	}
 	
 	@Override
-	public void delete(Integer id) {
+	public void delete(String id) {
 		repository.deleteById(id);		
 	}
 		

@@ -22,7 +22,7 @@ public class Details_invoiceService implements IDetails_invoiceService{
 	}
 	
 	@Override
-	public Optional<Details_invoice> findById(Integer id) {
+	public Optional<Details_invoice> findById(String id) {
 		return repository.findById(id);
 	}
 	
@@ -32,7 +32,7 @@ public class Details_invoiceService implements IDetails_invoiceService{
 	}
 	
 	@Override
-	public void delete(Integer id) {
+	public void delete(String id) {
 		repository.deleteById(id);		
 	}
 		

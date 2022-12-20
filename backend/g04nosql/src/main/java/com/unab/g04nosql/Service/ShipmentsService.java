@@ -22,7 +22,7 @@ public class ShipmentsService implements IShipmentsService{
 	}
 	
 	@Override
-	public Optional<Shipments> findById(Integer id) {
+	public Optional<Shipments> findById(String id) {
 		return repository.findById(id);
 	}
 	
@@ -32,7 +32,7 @@ public class ShipmentsService implements IShipmentsService{
 	}
 	
 	@Override
-	public void delete(Integer id) {
+	public void delete(String id) {
 		repository.deleteById(id);		
 	}
 		

@@ -22,7 +22,7 @@ public class DepartmentsService implements IDepartmentsService{
 	}
 	
 	@Override
-	public Optional<Departments> findById(Integer id) {
+	public Optional<Departments> findById(String id) {
 		return repository.findById(id);
 	}
 	
@@ -32,7 +32,7 @@ public class DepartmentsService implements IDepartmentsService{
 	}
 	
 	@Override
-	public void delete(Integer id) {
+	public void delete(String id) {
 		repository.deleteById(id);		
 	}
 		
